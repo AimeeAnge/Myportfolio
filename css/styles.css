@@ -471,8 +471,18 @@ body {
     font-weight: 600;
     color: var(--text-dark);
 }
-
-.form-input,
+.course-input,.course-inputt{
+    width: 40%;
+    padding: 12px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    background: #fff;
+    color: var(--text-dark);
+    font-size: 15px;
+    transition: box-shadow 0.18s ease, border-color 0.18s ease;
+    display: inline-block;
+}
+.contact .form-input,
 .form-textarea {
     width: 100%;
     padding: 12px 14px;
@@ -546,23 +556,77 @@ body {
 /* Calculator live result box */
 .calc-result {
     max-width: 720px;
-    margin: 20px auto 40px auto;
-    padding: 18px 22px;
-    border-radius: 12px;
-    background: linear-gradient(180deg, rgba(37,98,235,0.06), rgba(30,64,175,0.03));
-    border: 1px solid rgba(37,98,235,0.06);
+    margin: 20px auto 0 auto;
+    padding: 22px 28px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(37,98,235,0.08), rgba(30,64,175,0.05));
+    border: 1px solid rgba(37,98,235,0.14);
     color: var(--text-dark);
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 500;
     text-align: center;
-    box-shadow: 0 8px 30px rgba(11,24,58,0.04);
+    box-shadow: 0 10px 36px rgba(11,24,58,0.07);
+    line-height: 2;
+    transition: var(--transition);
+}
+
+.calc-result strong {
+    color: var(--accent-color);
 }
 
 .calc-result small {
     display: block;
-    margin-top: 6px;
-    font-weight: 600;
+    margin-top: 8px;
+    font-weight: 500;
     color: var(--text-light);
     font-size: 13px;
+}
+
+/* GPA scale reference table */
+.gpa-scale {
+    max-width: 720px;
+    margin: 24px auto 40px auto;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 24px rgba(11,24,58,0.05);
+}
+
+.gpa-scale caption {
+    font-weight: 700;
+    font-size: 15px;
+    padding: 10px 0 8px 0;
+    color: var(--accent-color);
+    text-align: left;
+    caption-side: top;
+}
+
+.gpa-scale th {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: #fff;
+    padding: 10px 16px;
+    text-align: left;
+}
+
+.gpa-scale td {
+    padding: 9px 16px;
+    border-bottom: 1px solid rgba(11,24,58,0.06);
+    color: var(--text-dark);
+    background: var(--white);
+}
+
+.gpa-scale tr:last-child td { border-bottom: none; }
+
+.gpa-scale tr:hover td {
+    background: rgba(37,98,235,0.04);
+}
+
+body.dark .gpa-scale td {
+    background: rgba(6,12,30,0.6);
+    border-color: rgba(255,255,255,0.04);
+    color: var(--text-light);
 }
 
 .contact-btn {

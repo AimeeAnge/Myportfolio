@@ -64,10 +64,10 @@
                     <h3>Frontend</h3>
                     <p>Building responsive, accessible interfaces using semantic HTML, modern CSS, and JavaScript frameworks.</p>
                     <ul>
-                        <li>HTML5 & Semantic Markup</li>
-                        <li>CSS3, Flexbox & Grid</li>
-                        <li>Modern JavaScript (ES6+)</li>
-                        <li>React / Component-driven UI</li>
+                        <li>HTML & Semantic Markup</li>
+                        <li>CSS, Flexbox & Grid</li>
+                        <li>Modern JavaScript (ES6)</li>
+                        <li>React</li>
                     </ul>
                 </div>
                 <div class="skill-card">
@@ -76,8 +76,8 @@
                     <ul>
                         <li>Node.js & Express</li>
                         <li>RESTful API design</li>
-                        <li>MongoDB / SQL basics</li>
-                        <li>Python scripting</li>
+                        <li>MongoDB / MySQL</li>
+                        <li>Python </li>
                     </ul>
                 </div>
                 <div class="skill-card">
@@ -86,8 +86,8 @@
                     <ul>
                         <li>Git & GitHub</li>
                         <li>VS Code</li>
-                        <li>Responsive & mobile-first design</li>
-                        <li>Testing / Debugging basics</li>
+                        <li>Responsive & mobile design (Flutter)</li>
+                        <li>Testing / Debugging (GPT5)</li>
                     </ul>
                 </div>
             </div>
@@ -112,6 +112,7 @@
                             <span class="tag">CSS</span>
                             <span class="tag">JS</span>
                         </div>
+                        <a href="https://aimeeange.github.io/calculator/" target="_blank" class="project-link">View Project →</a>
                     </div>
                 </div>
 
@@ -128,6 +129,7 @@
                             <span class="tag">JS</span>
                             <span class="tag">CSS</span>
                         </div>
+                        <a href="https://aimeeange.github.io/expensisApp/" target="_blank" class="project-link">View Project →</a>
                     </div>
                 </div>
 
@@ -144,6 +146,7 @@
                             <span class="tag">Media Queries</span>
                             <span class="tag">JS</span>
                         </div>
+                        <a href="https://aimeeange.github.io/example-portifoli/" target="_blank" class="project-link">View Project →</a>
                     </div>
                 </div>
             </div>
@@ -158,29 +161,75 @@
             <form action="" id="gpaform" class="form">
                 <div class="form-group">
                     <label for="course1">Course 1 marks</label>
-                    <input class="form-input course-input" type="number" id="course1" name="course1" min="0" max="100" placeholder="Enter marks (0-100)" required>
+                    <input class="form-input course-input" type="text" id="course1-name"   placeholder="Enter course name" required>
+                    <input class="form-input course-inputt" type="number" id="course1" name="course1" min="0" max="100" placeholder="Enter marks (0-100)" required>
                 </div>
                 <div class="form-group">
                     <label for="course2">Course 2 marks</label>
-                    <input class="form-input course-input" type="number" id="course2" name="course2" min="0" max="100" placeholder="Enter marks (0-100)" required>
+                    <input class="form-input course-input" type="text" id="course2-name"   placeholder="Enter course name" required>
+                    <input class="form-input course-inputt" type="number" id="course2" name="course2" min="0" max="100" placeholder="Enter marks (0-100)" required>
                 </div>
                 <div class="form-group">
                     <label for="course3">Course 3 marks</label>
-                    <input class="form-input course-input" type="number" id="course3" name="course3" min="0" max="100" placeholder="Enter marks (0-100)" required>
+                    <input class="form-input course-input" type="text" id="course3-name"   placeholder="Enter course name" required>
+                    <input class="form-input course-inputt" type="number" id="course3" name="course3" min="0" max="100" placeholder="Enter marks (0-100)" required>
                 </div>
                 <div class="form-actions">
                     <button type="button" id="add-course-btn" class="form-add">+ Add course</button>
                     <button type="submit" class="form-submit">Calculate Total</button>
                 </div>
             </form>
-            <div id="calc-result" class="calc-result" aria-live="polite">Total marks = 0 — Average = 0 Classificarion = </div>
+            <div id="calc-result" class="calc-result" aria-live="polite">Enter your course marks above and click <strong>Calculate GPA</strong> to see your results.</div>
+
+            <table class="gpa-scale">
+                <caption>📊 GPA Grading Scale Reference</caption>
+                <thead>
+                    <tr>
+                        <th>Marks Range</th>
+                        <th>GPA Points</th>
+                        <th>Classification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>80 – 100</td>
+                        <td>5.00</td>
+                        <td>🏆 First Class</td>
+                    </tr>
+                    <tr>
+                        <td>70 – 79</td>
+                        <td>4.00</td>
+                        <td>🥈 Second Class Upper</td>
+                    </tr>
+                    <tr>
+                        <td>60 – 69</td>
+                        <td>3.00</td>
+                        <td>🥉 Second Class Lower</td>
+                    </tr>
+                    <tr>
+                        <td>50 – 59</td>
+                        <td>2.00</td>
+                        <td>✅ Pass</td>
+                    </tr>
+                    <tr>
+                        <td>45 – 49</td>
+                        <td>1.00</td>
+                        <td>❌ Fail</td>
+                    </tr>
+                    <tr>
+                        <td>0 – 44</td>
+                        <td>0.00</td>
+                        <td>❌ Fail</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
     <!-- CV Section -->
     <section id="cv" class="cv">
         <div class="container">
             <h2>Curriculum Vitae</h2>
-            <p style="text-align:center;max-width:900px;margin:0 auto 16px;">Download or preview my CV below. The CV is stored locally under <strong>assets/cv/</strong> so it will work when served from GitHub Pages.</p>
+            <p style="text-align:center;max-width:900px;margin:0 auto 16px;">Download or preview my CV below. </p>
             <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;align-items:center;margin-top:18px;">
                 <a href="assets/cv/AimeeCV.pdf" download class="contact-btn">Download CV (PDF)</a>
                 <a href="assets/cv/AimeeCV.pdf" target="_blank" class="contact-btn">Open CV (PDF)</a>

@@ -24,10 +24,12 @@ document.addEventListener('DOMContentLoaded', function () {
 	const gpaForm = document.getElementById('gpaform');
 	const addBtn = document.getElementById('add-course-btn');
 	const resultEl = document.getElementById('calc-result');
-	const MAX_COURSES = 12;
+
+	const MAX_COURSES = 15;
 
 	// count existing course inputs
-	let courseCount = gpaForm.querySelectorAll('.course-input').length;
+
+	let courseCount = gpaForm.querySelectorAll('.course-inputt').length;
 
 	// Helper to create a new course input
 	function createCourseInput(index) {
@@ -38,25 +40,65 @@ document.addEventListener('DOMContentLoaded', function () {
 		label.htmlFor = `course${index}`;
 		label.textContent = `Course ${index} marks`;
 
+		const inputname = document.createElement('input');
+		inputname.type = 'text';
+		inputname.id = `course${index}-name`;
+		inputname.className = 'form-input course-input';
+
+
+		inputname.placeholder = 'Enter course name';
+
 		const input = document.createElement('input');
 		input.type = 'number';
 		input.id = `course${index}`;
 		input.name = `course${index}`;
-		input.className = 'form-input course-input';
+
+
+		input.className = 'form-input course-inputt';
 		input.placeholder = 'Enter marks (0-100)';
 		input.min = '0';
 		input.max = '100';
 
 		wrap.appendChild(label);
+
+
+		wrap.appendChild(inputname);
 		wrap.appendChild(input);
 		return wrap;
 	}
 
-	// Calculate and display total and average based on filled inputs
+	// Convert a single mark (0–100) to GPA point on a 0–5 scale
+	function markToGPA(mark) {
+		if (mark >= 80) return 5;
+		if (mark >= 70) return 4;
+		if (mark >= 60) return 3;
+		if (mark >= 50) return 2;
+		if (mark >= 45) return 1;
+		return 0;
+	}
+
+	// Classify based on GPA average
+	function getClassification(gpa) {
+		if (gpa >= 5)   return '🏆 First Class';
+		if (gpa >= 4)   return '🥈 Second Class Upper';
+		if (gpa >= 3)   return '🥉 Second Class Lower';
+		if (gpa >= 2)   return '✅ Pass';
+		return '❌ Fail';
+	}
+
+
+
+	// Calculate and display total, average, GPA and classification
 	function calculateAndDisplay() {
 		const inputs = gpaForm.querySelectorAll('.course-input');
 		let total = 0;
+
+
+		let gpaSum = 0;
 		let count = 0;
+
+
+
 		inputs.forEach(input => {
 			const raw = (input.value || '').toString().trim();
 			if (raw === '') {
@@ -75,30 +117,26 @@ document.addEventListener('DOMContentLoaded', function () {
 			if (clamped !== num) input.value = clamped;
 			input.classList.remove('input-error');
 			total += clamped;
+
+
+			gpaSum += markToGPA(clamped);
 			count += 1;
 		});
-        
+
+
+
 		const average = count > 0 ? total / count : 0;
-        let grade= 'hello';
-        if (average>=80 && average<=100) {
-            grade='Grade A';
-        } else if (average>=70 && average<80) {
-            grade='Grade B';            
-        }
-         else if (average>=60 && average<70) {
-            grade='Grade c';            
-        }
-         else if (average>=50 && average<70) {
-            grade='Grade';            
-        }
-         else if (average>=1 && average<50) {
-            grade='Grade F';            
-        } else {
-            grade=" "
-        } {
-            
-        }
-		resultEl.innerHTML = `Total marks = ${total} - Classfication = ${grade} - Average = ${average.toFixed(2)}<small>${count} course(s) considered</small>`;
+		const gpa = count > 0 ? gpaSum / count : 0;
+		const classification = count > 0 ? getClassification(gpa) : '—';
+
+		resultEl.innerHTML =
+			`<strong>Total Marks:</strong> ${total} &nbsp;|&nbsp; ` +
+			`<strong>Average:</strong> ${average.toFixed(2)}% &nbsp;|&nbsp; ` +
+			`<strong>GPA:</strong> ${gpa.toFixed(2)} / 5.00 &nbsp;|&nbsp; ` +
+			`<strong>Classification:</strong> ${classification} ` +
+
+
+			`<br><small>${count} course(s) considered</small>`;
 	}
 
 	// Initial live calculation
