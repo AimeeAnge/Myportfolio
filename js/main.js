@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Calculate and display total, average, GPA and classification
 	function calculateAndDisplay() {
-		const inputs = gpaForm.querySelectorAll('.course-input');
+		const inputs = gpaForm.querySelectorAll('.course-inputt');
 		let total = 0;
 
 
@@ -144,21 +144,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Event delegation: recalc on any input change within the form
 	gpaForm.addEventListener('input', function (e) {
-		if (e.target && e.target.matches('.course-input')) {
+		if (e.target && e.target.matches('.course-inputt')) {
 			calculateAndDisplay();
 		}
 	});
 
 	// Add-course button behavior (adds new input and recalculates)
 	addBtn.addEventListener('click', function () {
-		const current = gpaForm.querySelectorAll('.course-input').length;
+		const current = gpaForm.querySelectorAll('.course-inputt').length;
 		if (current >= MAX_COURSES) return;
 		const newIndex = current + 1;
 		const newInputWrap = createCourseInput(newIndex);
 		const actions = gpaForm.querySelector('.form-actions');
 		gpaForm.insertBefore(newInputWrap, actions);
 		// focus the new input
-		const newInput = newInputWrap.querySelector('.course-input');
+		const newInput = newInputWrap.querySelector('.course-inputt');
 		if (newInput) newInput.focus();
 		calculateAndDisplay();
 	});
